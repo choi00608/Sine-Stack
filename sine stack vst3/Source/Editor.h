@@ -120,6 +120,8 @@ class Editor final : public juce::AudioProcessorEditor, private juce::ChangeList
     DesignTheme theme;
     juce::ComboBox designList;
     juce::Label designLabel, buildLabel;
+    juce::TextButton scopeButton {"Output Scope"};
+    std::unique_ptr<OutputScopeWindow> scopeWindow;
     SineStack& processor;
     EnvelopeGraph envelopeGraph;
     EqGraph eqGraph;
@@ -174,10 +176,16 @@ public:
         theme.select(DesignTheme::savedIndex());
         setLookAndFeel(&theme);
         for (auto* component : std::initializer_list<juce::Component*>{&savePresetButton, &loadPresetButton, &refreshPresetButton,
-                &previousPresetButton, &nextPresetButton, &presetList, &presetBank, &presetCategory, &presetStatus, &envelopeGraph, &designList, &designLabel, &buildLabel,
+                &previousPresetButton, &nextPresetButton, &presetList, &presetBank, &presetCategory, &presetStatus, &scopeButton, &envelopeGraph, &designList, &designLabel, &buildLabel,
                 &inspectorTitle, &inspectorCategory, &inspectorDescription, &bypassButton, &duplicateButton, &removeButton,
                 &routeViewport, &addRouteButton, &routeHeading, &routeParameterHeading, &routeDepthHeading, &chainViewport, &addButton, &modViewport, &addLfoButton, &routingLabel, &keyboard, &sampleRateList, &sampleRateLabel, &voiceModeList, &pitchLatencyList})
             addAndMakeVisible(component);
+        scopeButton.setName("Open output scope");
+        scopeButton.setTooltip("View the final stereo output waveform while editing your sound.");
+        scopeButton.onClick = [this] {
+            if (!scopeWindow) scopeWindow = std::make_unique<OutputScopeWindow>(processor.outputCapture, theme);
+            scopeWindow->show();
+        };
         buildLabel.setName("Version and build date");
         buildLabel.setFont(juce::Font(juce::FontOptions(11.0f)));
         buildLabel.setJustificationType(juce::Justification::centredRight);
@@ -200,6 +208,7 @@ public:
             theme.select(designList.getSelectedId() - 1);
             updateDesignColours();
             sendLookAndFeelChange(); repaint();
+            if (scopeWindow) { scopeWindow->sendLookAndFeelChange(); scopeWindow->repaint(); }
             const bool saved = DesignTheme::saveIndex(theme.index());
             designList.setTooltip(saved ? "Appearance saved for new windows. Sound presets are unchanged."
                                         : "Appearance changed for this window, but the preference file could not be saved.");
@@ -343,6 +352,7 @@ public:
         setSize(1016, 844); refreshPresetList(); refreshChain(); startTimerHz(60);
     }
     ~Editor() override {
+        scopeWindow.reset();
         stopTimer(); animator.cancelAllAnimations(false); processor.removeChangeListener(this); envelopeGraph.finishDrag(); eqGraph.finishDrag();
         routeViewport.setViewedComponent(nullptr, false); chainViewport.setViewedComponent(nullptr, false); modViewport.setViewedComponent(nullptr, false); setLookAndFeel(nullptr);
     }
@@ -1092,7 +1102,7 @@ private:
             g.fillRect(getLocalBounds());
         }
         g.setColour(uiColour(*this, DesignTheme::text)); g.setFont(26.0f); g.drawText("SINE STACK", 28, 20, 300, 36, juce::Justification::centredLeft);
-        g.setFont(13.0f); g.setColour(uiColour(*this, DesignTheme::muted)); g.drawText("One wave. Build your chain.", 29, 58, 300, 20, juce::Justification::centredLeft);
+        g.setFont(13.0f); g.setColour(uiColour(*this, DesignTheme::muted)); g.drawText("One wave. Build your chain.", 29, 58, 192, 20, juce::Justification::centredLeft);
         g.setColour(uiColour(*this, DesignTheme::panel));
         g.fillRoundedRectangle(24, 104, 324, 316, 12); g.fillRoundedRectangle(361, 104, 631, 316, 12);
         g.fillRoundedRectangle(24, 436, 968, 166, 12);
@@ -1157,6 +1167,7 @@ private:
         }
     }
     void resized() override {
+        scopeButton.setBounds(230, 56, 118, 22);
         designLabel.setBounds(365, 4, 197, 16); designList.setBounds(365, 22, 197, 30);
         sampleRateLabel.setBounds(29, 80, 90, 20); sampleRateList.setBounds(122, 78, 152, 22);
         savePresetButton.setBounds(570, 22, 112, 30); loadPresetButton.setBounds(690, 22, 112, 30);

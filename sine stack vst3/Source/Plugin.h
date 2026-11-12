@@ -7,6 +7,7 @@
 #include "AudioPitchShift.h"
 #include "LfoTiming.h"
 #include "DelayTiming.h"
+#include "OutputCapture.h"
 
 class SineStack final : public juce::AudioProcessor, public juce::ChangeBroadcaster {
 public:
@@ -84,6 +85,7 @@ public:
     juce::File getPresetFile() const;
     juce::AudioProcessorValueTreeState state;
     juce::MidiKeyboardState keyboard;
+    OutputCapture outputCapture;
     // Message-thread-only device access, owned by the standalone wrapper. Null in AU hosts.
     juce::AudioDeviceManager* standaloneDevices = nullptr;
 private:

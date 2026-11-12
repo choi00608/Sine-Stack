@@ -2,6 +2,7 @@
 #include "BuildInfo.h"
 #include "EqGraph.h"
 #include "DesignTheme.h"
+#include "OutputScope.h"
 #include "FactoryPresets.h"
 #include "PresetCategories.h"
 #include <cstdlib>
@@ -1305,6 +1306,7 @@ void SineStack::processBlock(juce::AudioBuffer<float>& b, juce::MidiBuffer& midi
         const float g = gain.getNextValue();
         for (int c = 0; c < b.getNumChannels(); ++c) b.setSample(c, n, juce::jlimit(-0.98f, 0.98f, b.getSample(c, n) * g));
     }
+    outputCapture.push(b, getSampleRate());
 }
 void SineStack::getStateInformation(juce::MemoryBlock& data) { if (auto xml = state.copyState().createXml()) copyXmlToBinary(*xml, data); }
 juce::File SineStack::getPresetFile() const {

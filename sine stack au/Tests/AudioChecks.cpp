@@ -744,10 +744,12 @@ void checkEnvelopeState() {
 #include "ThemeChecks.h"
 #include "FactoryChecks.h"
 #include "PresetCategoryChecks.h"
+#include "OutputScopeChecks.h"
 
 int main(int argc, char** argv) {
     juce::ScopedJuceInitialiser_GUI init;
     try {
+        if (argc == 2 && juce::String(argv[1]) == "--check-output-scope") { checkOutputScope(); return 0; }
         if (argc == 2 && juce::String(argv[1]) == "--check-categories") { checkPresetCategories(); return 0; }
         if (argc == 2 && juce::String(argv[1]) == "--check-factory") { checkFactoryPresets(); return 0; }
         if (argc == 3 && juce::String(argv[1]) == "--export-factory") { checkFactoryPresets(juce::File(argv[2])); return 0; }
@@ -762,6 +764,7 @@ int main(int argc, char** argv) {
         if (argc == 2 && juce::String(argv[1]) == "--benchmark-ordered") { benchmarkOrderedChain(); return 0; }
         if (argc == 3 && juce::String(argv[1]) == "--dump-fx-defaults") { dumpDefaultFx(juce::File(argv[2])); return 0; }
         if (argc == 3 && juce::String(argv[1]) == "--dump-source-defaults") { dumpSourceDefaults(juce::File(argv[2])); return 0; }
+        checkOutputScope();
         checkPresetCategories();
         checkFactoryPresets();
         checkDesignThemes();
