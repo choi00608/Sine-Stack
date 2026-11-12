@@ -1,0 +1,6 @@
+if(NOT DEFINED OUTPUT OR NOT DEFINED VERSION OR NOT DEFINED HEADER OR NOT DEFINED BUILT_AT)
+    message(FATAL_ERROR "OUTPUT, VERSION, HEADER and BUILT_AT are required")
+endif()
+get_filename_component(directory "${OUTPUT}" DIRECTORY)
+file(MAKE_DIRECTORY "${directory}")
+file(WRITE "${OUTPUT}" "#include \"${HEADER}\"\nnamespace BuildInfo {\nconst char* version() noexcept { return \"${VERSION}\"; }\nconst char* timestampUTC() noexcept { return \"${BUILT_AT}\"; }\n}\n")

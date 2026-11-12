@@ -1,0 +1,7 @@
+**/build/
+**/build-before-move/
+.DS_Store
+dist/
+__pycache__/
+.sinestack-version.lock
+.version-*

@@ -1,0 +1,76 @@
+Sine Stack — macOS Universal / AU + VST3 + Standalone
+
+지원: macOS 11 이상, Apple Silicon 및 Intel Mac.
+Python, Homebrew, 빌드 도구 없이 설치된 앱과 플러그인을 사용할 수 있습니다.
+
+터미널 설치 / 업데이트 (사용자 전용, sudo 없이)
+
+1. 같은 릴리스의 install.sh, SineStack-버전-macOS-Universal.tar.gz,
+   SHA256SUMS.txt를 한 폴더에 다운로드합니다.
+2. 그 폴더에서 다음 명령을 실행합니다. VERSION은 받은 파일의 버전으로 바꿉니다.
+   bash install.sh --archive "SineStack-VERSION-macOS-Universal.tar.gz"
+3. AU, VST3, Sine Stack.app을 함께 검증하고 설치합니다.
+4. 앱과 DAW를 완전히 종료했다가 다시 엽니다.
+
+GitHub 공개 릴리스가 준비된 뒤에는 다음 명령으로 최신 버전을 설치/업데이트합니다.
+저장소: https://github.com/choi00608/Sine-Stack
+   bash install.sh
+
+한 번 저장소를 지정한 후 다음 업데이트:
+   bash "$HOME/Library/Application Support/SineStack/Installer/install.sh"
+
+버전 지정: --version 0.1.2
+설치 없이 검사: --check
+기본적으로 다운그레이드는 거부합니다. 의도한 경우에만 --allow-downgrade를 사용합니다.
+GitHub 릴리스가 아직 없으면 로컬 --archive 방식으로 설치할 수 있습니다.
+
+터미널 설치 위치:
+AU:   ~/Library/Audio/Plug-Ins/Components/Sine Stack.component
+VST3: ~/Library/Audio/Plug-Ins/VST3/Sine Stack.vst3
+앱:   ~/Applications/Sine Stack.app
+업데이트 도구: ~/Library/Application Support/SineStack/Installer/
+
+패키지 설치 (모든 사용자, 관리자 인증)
+
+1. 앱과 DAW를 종료합니다.
+2. SineStack-버전-macOS-Universal-unsigned.pkg를 엽니다.
+3. AU / VST3 / Sine Stack.app 중 필요한 항목을 선택합니다. 기본값은 세 가지 모두입니다.
+4. 관리자 인증 후 앱이나 DAW를 다시 엽니다.
+
+패키지 설치 위치:
+AU:   /Library/Audio/Plug-Ins/Components/Sine Stack.component
+VST3: /Library/Audio/Plug-Ins/VST3/Sine Stack.vst3
+앱:   /Applications/Sine Stack.app
+
+두 설치 방식은 위치가 다릅니다. 이전 방식의 복사본이 다른 위치에 남아 있으면
+구버전이 실행될 수 있습니다. 사용하지 않을 복사본은 검색 폴더 밖에 백업하고
+다시 검색하세요. 설치 도구는 반대 위치의 복사본이나 사용자 프리셋·설정을 삭제하지 않습니다.
+건반 아래 오른쪽에서 실행 중인 버전과 빌드 시각을 확인할 수 있습니다.
+
+Logic Pro: 소프트웨어 악기 트랙 → Instrument → AU Instruments → SineStack → Sine Stack.
+오디오 FX 슬롯에는 표시되지 않습니다. 목록에 없으면 플러그인 관리자에서 재검색하세요.
+Standalone: Options → Audio/MIDI Settings에서 출력 장치와 MIDI 입력을 선택합니다.
+Factory 뱅크에 사운드 10개가 내장되어 있으며 추가 프리셋 설치는 필요 없습니다.
+
+현재 패키지는 Developer ID 서명·Apple 공증이 없고 번들은 ad-hoc 서명을 사용합니다.
+체크섬 검사는 파일 일치 여부를 확인하며 Apple 공증을 대신하지 않습니다.
+출처를 확인한 다운로드가 macOS에서 차단되면 Apple 안내를 참고하세요.
+https://support.apple.com/ko-kr/102445
+
+제거: 앱·DAW를 종료하고 사용 중인 설치 위치의 .component / .vst3 / .app을
+휴지통으로 옮깁니다. 사용자 프리셋과 설정은 별도로 유지됩니다.
+
+English
+
+macOS 11+, Universal arm64 + x86_64. No Python or Homebrew is needed by the terminal installer.
+Download install.sh, SineStack-VERSION-macOS-Universal.tar.gz and SHA256SUMS.txt together.
+Run: bash install.sh --archive "SineStack-VERSION-macOS-Universal.tar.gz"
+After publishing a public GitHub release: bash install.sh --repo choi00608/Sine-Stack
+Subsequent updates: bash "$HOME/Library/Application Support/SineStack/Installer/install.sh"
+Use --check to verify without installing; --version selects a specific vVERSION release.
+The terminal installer installs all three bundles to your user folders without sudo.
+The .pkg selects AU, VST3 and Standalone by default and installs to system-wide locations
+with administrator authentication. Locations are listed above. Avoid keeping stale copies
+in both locations. Presets and settings are retained; reopen your app and DAW after updating.
+The package is unsigned and not notarized; bundles use ad-hoc signatures.
+https://support.apple.com/en-us/102445

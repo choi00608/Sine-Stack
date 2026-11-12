@@ -1,0 +1,38 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 22,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "universal",
+      "displayName": "macOS Universal (Apple Silicon + Intel)",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_OSX_ARCHITECTURES": "arm64;x86_64",
+        "CMAKE_OSX_DEPLOYMENT_TARGET": "11.0",
+        "SINESTACK_TESTS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "universal",
+      "configurePreset": "universal",
+      "jobs": 4
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "universal",
+      "configurePreset": "universal",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
