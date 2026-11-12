@@ -24,6 +24,7 @@ juce_add_plugin(SineStack COMPANY_NAME "SineStack" BUNDLE_ID "audio.sinestack.sy
     BLUETOOTH_PERMISSION_TEXT "Sine Stack uses Bluetooth to connect MIDI keyboards and controllers so you can play the synthesizer wirelessly."
     COPY_PLUGIN_AFTER_BUILD FALSE FORMATS VST3 Standalone
     VST3_CATEGORIES Instrument Synth)
+include("${SINESTACK_ROOT}/cmake/AppIcon.cmake")
 target_sources(SineStack PRIVATE Source/Plugin.cpp)
 include(cmake/BuildInfo.cmake)
 target_sources(SineStack_Standalone PRIVATE Source/Standalone.cpp)
