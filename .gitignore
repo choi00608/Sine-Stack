@@ -1,7 +1,27 @@
+# Generated builds and release assets
 **/build/
 **/build-before-move/
-.DS_Store
 dist/
+
+# Local agent instructions and configuration (including nested folders)
+[Aa][Gg][Ee][Nn][Tt].[Mm][Dd]
+[Aa][Gg][Ee][Nn][Tt][Ss].[Mm][Dd]
+AGENTS.override.md
+.agents/
+.codex/
+
+# Machine-specific settings and local environments
+.DS_Store
+CMakeUserPresets.json
+.env
+.env.*
+!.env.example
+!.env.sample
+.venv/
+venv/
+
+# Python caches and temporary version reservations
 __pycache__/
+*.py[cod]
 .sinestack-version.lock
 .version-*
