@@ -16,6 +16,7 @@ FetchContent_Declare(JUCE GIT_REPOSITORY https://github.com/juce-framework/JUCE.
 FetchContent_MakeAvailable(JUCE)
 juce_add_plugin(SineStack COMPANY_NAME "SineStack" BUNDLE_ID "audio.sinestack.synth"
     PLUGIN_MANUFACTURER_CODE Snst PLUGIN_CODE Snst PRODUCT_NAME "Sine Stack"
+    ICON_BIG "${SINESTACK_ROOT}/assets/SineStackIcon.png"
     PLIST_TO_MERGE "${SINESTACK_VERSION_PLIST}"
     IS_SYNTH TRUE NEEDS_MIDI_INPUT TRUE NEEDS_MIDI_OUTPUT FALSE
     IS_MIDI_EFFECT FALSE EDITOR_WANTS_KEYBOARD_FOCUS FALSE

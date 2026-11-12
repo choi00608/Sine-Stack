@@ -87,6 +87,18 @@ class SharedVersionTests(unittest.TestCase):
         (folder / "resources/welcome.html").write_text("installer resources")
         self.assertEqual(self.prepare()["version"], "0.1.3")
 
+    def test_icon_changes_share_version_and_ignore_timestamp_only_changes(self):
+        self.prepare()
+        icon = self.root / "assets/SineStackIcon.png"
+        icon.parent.mkdir()
+        icon.write_bytes(b"first icon")
+        second = self.prepare()
+        self.assertEqual(second["version"], "0.1.2")
+        icon.touch()
+        self.assertEqual(self.prepare(), second)
+        icon.write_bytes(b"updated icon")
+        self.assertEqual(self.prepare()["version"], "0.1.3")
+
     def test_corrupt_state_is_not_reset(self):
         path = self.root / "version.json"
         path.write_text("broken")

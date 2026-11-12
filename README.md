@@ -25,10 +25,10 @@ curl -fL --proto '=https' --proto-redir '=https' \
 bash "$HOME/Library/Application Support/SineStack/Installer/install.sh"
 ```
 
-릴리스 게시 전이거나 오프라인이라면 같은 버전의 `install.sh`, `SineStack-0.1.2-macOS-Universal.tar.gz`, `SHA256SUMS.txt`를 한 폴더에 놓고 실행합니다.
+릴리스 게시 전이거나 오프라인이라면 같은 버전의 `install.sh`, `SineStack-0.1.3-macOS-Universal.tar.gz`, `SHA256SUMS.txt`를 한 폴더에 놓고 실행합니다.
 
 ```sh
-bash install.sh --archive "SineStack-0.1.2-macOS-Universal.tar.gz"
+bash install.sh --archive "SineStack-0.1.3-macOS-Universal.tar.gz"
 ```
 
 파일을 더블클릭해 설치하려면 Releases의 `.pkg`를 사용하세요. **AU·VST3·실행 앱 모두 기본 선택**되며 관리자 인증 후 시스템 전체에 설치됩니다. GitHub의 `Source code (zip)`은 설치 파일이 아닙니다.
@@ -76,7 +76,7 @@ AUDIO CHAIN과 MODULATION을 합쳐 최대 **32개 블록**을 지원합니다. 
 
 ## 버전 정보
 
-현재 문서 기준 버전은 **0.1.2**입니다. 최신 기준값은 루트 [version.json](version.json), 변경 내역은 [CHANGELOG.md](CHANGELOG.md)에서 확인합니다.
+현재 문서 기준 버전은 **0.1.3**입니다. 최신 기준값은 루트 [version.json](version.json), 변경 내역은 [CHANGELOG.md](CHANGELOG.md)에서 확인합니다.
 
 - 앱과 플러그인의 **건반 아래 오른쪽**에 현재 실행 중인 버전과 빌드 날짜·시각이 표시됩니다.
 - AU·VST3·Standalone은 공통 버전과 빌드 시각을 사용합니다.
@@ -94,6 +94,7 @@ docs/                      설치·사용·개발·배포 문서와 화면 이�
 sine stack au/             AU + Standalone 소스와 테스트
 sine stack vst3/           VST3 + Standalone 소스와 테스트
 Factory Presets/           내장 프리셋 파일 사본과 오디오 예시
+assets/                    실행 앱 아이콘 원본
 cmake/                     공통 버전 구성
 scripts/                   버전 관리·통합 빌드 및 설치·검사
 packaging/                 터미널 설치·업데이트 및 macOS 패키지 생성·검증

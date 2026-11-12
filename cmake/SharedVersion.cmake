@@ -4,7 +4,7 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter)
 file(GLOB_RECURSE sinestack_version_inputs CONFIGURE_DEPENDS
     "${SINESTACK_ROOT}/sine stack au/Source/*" "${SINESTACK_ROOT}/sine stack au/cmake/*"
     "${SINESTACK_ROOT}/sine stack vst3/Source/*" "${SINESTACK_ROOT}/sine stack vst3/cmake/*"
-    "${SINESTACK_ROOT}/cmake/*.cmake")
+    "${SINESTACK_ROOT}/cmake/*.cmake" "${SINESTACK_ROOT}/assets/*.png")
 file(GLOB sinestack_packaging_inputs CONFIGURE_DEPENDS
     "${SINESTACK_ROOT}/packaging/*.py" "${SINESTACK_ROOT}/packaging/*.sh"
     "${SINESTACK_ROOT}/packaging/*.txt" "${SINESTACK_ROOT}/packaging/resources/*")

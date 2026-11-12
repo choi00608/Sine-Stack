@@ -57,4 +57,14 @@ add_custom_target(fixture ALL COMMAND "${CMAKE_COMMAND}" -E true)
     for name in ("sine stack au", "sine stack vst3"):
         run("--build", fixture / name / "build")
         assert version(name) == "0.1.3"
+    (fixture / "assets").mkdir()
+    icon = fixture / "assets/SineStackIcon.png"
+    icon.write_bytes(b"new icon")
+    for name in ("sine stack au", "sine stack vst3"):
+        run("--build", fixture / name / "build")
+        assert version(name) == "0.1.4"
+    icon.write_bytes(b"revised icon")
+    for name in ("sine stack au", "sine stack vst3"):
+        run("--build", fixture / name / "build")
+        assert version(name) == "0.1.5"
     print("PASS: direct CMake builds detect cross-project changes, share one version, and preserve no-op builds")

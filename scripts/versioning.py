@@ -18,6 +18,7 @@ def fingerprint(root):
         files.extend((base / "CMakeLists.txt", base / "CMakePresets.json"))
         for directory in ("Source", "cmake"):
             files.extend(p for p in (base / directory).rglob("*") if p.is_file())
+    files.extend(p for p in (root / "assets").rglob("*.png") if p.is_file())
     files.extend(p for p in (root / "cmake").rglob("*.cmake") if p.is_file())
     files.extend(root / "scripts" / name for name in ("versioning.py", "update_local.py"))
     # Release tooling and bundled installation instructions define a release too.

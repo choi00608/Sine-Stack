@@ -96,6 +96,7 @@ GUI 창이 필요한 검사는 디스플레이가 없는 환경에서 일부 생
 | 루트 `cmake/SharedVersion.cmake`, `scripts/versioning.py` | 공통 버전·빌드 시각 준비 |
 | 각 프로젝트의 `cmake/BuildInfo.cmake` | 실행 바이너리의 버전·빌드 시각 생성 |
 | `scripts/update_local.py` | 전체 빌드·검증·사용자 설치 |
+| `assets/SineStackIcon.png` | 양쪽 Standalone 빌드에서 사용하는 앱 아이콘 원본; JUCE가 `.icns` 자동 생성 |
 | `packaging/` | 터미널 설치·업데이트, 통합 `.pkg`·아카이브 생성과 검증 |
 
 `getAudioChain()`은 실제 오디오 처리 순서를, `getModulators()`는 독립 제어 영역을 제공합니다. 저장 상태의 `chain` 필드는 호환성을 위해 전체 블록 등록 목록을 유지합니다. 저장 형식을 변경할 때에는 기존 프리셋과 파라미터 ID 호환성을 함께 확인하세요.

@@ -36,7 +36,7 @@ bash "$HOME/Library/Application Support/SineStack/Installer/install.sh"
 같은 릴리스의 `install.sh`, `SineStack-버전-macOS-Universal.tar.gz`, `SHA256SUMS.txt`를 한 폴더에 다운로드하거나 복사합니다. 그 폴더에서 실행합니다.
 
 ```sh
-bash install.sh --archive "SineStack-0.1.2-macOS-Universal.tar.gz"
+bash install.sh --archive "SineStack-0.1.3-macOS-Universal.tar.gz"
 ```
 
 새 버전도 해당 버전의 세 파일을 받아 같은 방식으로 설치합니다. 네트워크 연결은 필요하지 않습니다.
@@ -45,7 +45,7 @@ bash install.sh --archive "SineStack-0.1.2-macOS-Universal.tar.gz"
 
 ```sh
 # 파일 검증과 설치 경로 확인만 수행
-bash install.sh --archive "SineStack-0.1.2-macOS-Universal.tar.gz" --check
+bash install.sh --archive "SineStack-0.1.3-macOS-Universal.tar.gz" --check
 # 공개된 특정 버전 선택 (태그 v0.1.2)
 bash install.sh --version 0.1.2
 # 의도한 다운그레이드만 명시적으로 허용
