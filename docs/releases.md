@@ -17,7 +17,7 @@ git remote add origin https://github.com/choi00608/Sine-Stack.git
 git push -u origin main
 ```
 
-처음 공개하기 전 파일 목록에서 개인 프리셋·절대 경로·빌드 캐시가 섞이지 않았는지 확인합니다. 프로젝트 자체 라이선스는 아직 지정되지 않았으므로 저장소에 적용할 라이선스는 관리자가 정합니다. 외부 코드 고지는 [의존성 안내](reference/dependencies.md)를 참고하세요.
+처음 공개하기 전 파일 목록에서 개인 프리셋·절대 경로·빌드 캐시가 섞이지 않았는지 확인합니다. Sine Stack 자체 코드와 관련 문서는 [MIT License](../LICENSE)를 적용하며, 재배포 시 해당 저작권 및 허가 고지를 함께 제공합니다. JUCE를 포함한 바이너리는 MIT만으로 배포되는 것이 아니므로 JUCE의 AGPLv3 또는 상용 라이선스 조건과 외부 코드 고지도 함께 확인합니다. 적용 범위와 출처는 [의존성 안내](reference/dependencies.md)를 참고하세요.
 
 ## 공통 버전 규칙
 

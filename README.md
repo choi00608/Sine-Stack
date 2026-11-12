@@ -106,4 +106,6 @@ dist/                      생성된 배포 파일 (Git 제외)
 
 ## 의존성과 라이선스
 
-JUCE 8.0.12, Signalsmith Stretch 1.3.2, Signalsmith Linear 0.6.6을 사용합니다. 포함된 외부 코드의 출처와 고지는 [개발 의존성 안내](docs/reference/dependencies.md)에 정리했습니다. 프로젝트 자체의 배포 라이선스는 아직 지정하지 않았습니다.
+Sine Stack의 자체 코드와 관련 문서는 [MIT License](LICENSE)로 제공합니다. 저작권 표기는 `Copyright (c) 2026 choi00608`이며, 복사·수정·재배포 시 라이선스의 저작권 및 허가 고지를 유지해야 합니다.
+
+JUCE 8.0.12, Signalsmith Stretch 1.3.2, Signalsmith Linear 0.6.6 등 외부 코드는 각 원래 라이선스를 따릅니다. 특히 JUCE가 포함된 AU·VST3·실행 앱의 배포에는 JUCE의 AGPLv3 또는 상용 라이선스 조건도 적용되며, 이 프로젝트의 MIT 라이선스가 이를 대체하지 않습니다. 출처와 적용 범위는 [의존성과 라이선스 안내](docs/reference/dependencies.md)를 참고하세요.
